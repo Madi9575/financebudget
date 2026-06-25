@@ -1,0 +1,20 @@
+{
+  "name": "EGO — Gestion Budgétaire",
+  "short_name": "EGO",
+  "description": "EGO — Application mobile de gestion budgétaire et d'épargne",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fafafa",
+  "theme_color": "#18181b",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
