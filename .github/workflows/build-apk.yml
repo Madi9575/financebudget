@@ -39,12 +39,28 @@ jobs:
       - name: Sync Capacitor
         run: npx cap sync android
 
+      - name: Fix Kotlin version conflict
+        run: |
+          cat >> android/build.gradle << 'EOF'
+
+          allprojects {
+              configurations.all {
+                  resolutionStrategy {
+                      force 'org.jetbrains.kotlin:kotlin-stdlib:1.9.24'
+                      force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.24'
+                      force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.24'
+                      force 'org.jetbrains.kotlin:kotlin-stdlib-common:1.9.24'
+                  }
+              }
+          }
+          EOF
+
       - name: Grant execute permission for gradlew
         run: chmod +x android/gradlew
 
       - name: Build Debug APK
         working-directory: ./android
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
