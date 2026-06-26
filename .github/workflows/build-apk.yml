@@ -39,6 +39,35 @@ jobs:
       - name: Sync Capacitor
         run: npx cap sync android
 
+      - name: Copy custom app icons
+        run: |
+          mkdir -p android/app/src/main/res/mipmap-mdpi
+          mkdir -p android/app/src/main/res/mipmap-hdpi
+          mkdir -p android/app/src/main/res/mipmap-xhdpi
+          mkdir -p android/app/src/main/res/mipmap-xxhdpi
+          mkdir -p android/app/src/main/res/mipmap-xxxhdpi
+          
+          cp app-icons/mipmap-mdpi/EGO.png android/app/src/main/res/mipmap-mdpi/ic_launcher.png || true
+          cp app-icons/mipmap-hdpi/EGO.png android/app/src/main/res/mipmap-hdpi/ic_launcher.png || true
+          cp app-icons/mipmap-xhdpi/EGO.png android/app/src/main/res/mipmap-xhdpi/ic_launcher.png || true
+          cp app-icons/mipmap-xxhdpi/EGO.png android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png || true
+          cp app-icons/mipmap-xxxhdpi/EGO.png android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png || true
+          
+          cp app-icons/mipmap-mdpi/EGO_round.png android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png || true
+          cp app-icons/mipmap-hdpi/EGO_round.png android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png || true
+          cp app-icons/mipmap-xhdpi/EGO_round.png android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png || true
+          cp app-icons/mipmap-xxhdpi/EGO_round.png android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png || true
+          cp app-icons/mipmap-xxxhdpi/EGO_round.png android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png || true
+          
+          cp app-icons/mipmap-mdpi/EGO_foreground.png android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png || true
+          cp app-icons/mipmap-hdpi/EGO_foreground.png android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png || true
+          cp app-icons/mipmap-xhdpi/EGO_foreground.png android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png || true
+          cp app-icons/mipmap-xxhdpi/EGO_foreground.png android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png || true
+          cp app-icons/mipmap-xxxhdpi/EGO_foreground.png android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png || true
+          
+          echo "✅ Icônes EGO copiées avec succès"
+          ls -la android/app/src/main/res/mipmap-xxxhdpi/
+
       - name: Fix Kotlin version conflict
         run: |
           cat >> android/build.gradle << 'EOF'
