@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+  }
+  
+  body {
+    @apply bg-zinc-50 text-zinc-900;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  /* Mobile viewport fix */
+  html, body, #root {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  /* Smooth scroll for horizontal lists */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  /* Premium subtle borders */
+  .premium-border {
+    @apply border border-zinc-200;
+  }
+
+  .premium-card {
+    @apply bg-white border border-zinc-100 shadow-[0_1px_2px_rgba(0,0,0,0.04)];
+  }
+}
